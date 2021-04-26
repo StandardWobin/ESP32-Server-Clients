@@ -30,15 +30,6 @@ int f_value = 0;
 int g_value = 0;
 int h_value = 0;
 
-int a = 0;
-int b = 0;
-int c = 0;
-int d = 0;
-int e = 0;
-int f = 0;
-int g = 0;
-int h = 0;
-
 int ghost_a = 0;
 int ghost_b = 0;
 int ghost_c = 0;
