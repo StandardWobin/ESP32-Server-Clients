@@ -92,20 +92,20 @@ class GUI:
                 # print("known client")
 
 
-Traceback (most recent call last):
-  File "/usr/lib/python3.7/threading.py", line 926, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.7/threading.py", line 870, in run
-    self._target(*self._args, **self._kwargs)
-  File "Socketserver.py", line 30, in thread_function_gui
-    gui = GUI(shared_information)
-  File "/home/rob/Documents/Server/GUI.py", line 64, in __init__
-    self.draw_to_infinity()
-  File "/home/rob/Documents/Server/GUI.py", line 71, in draw_to_infinity
-    self.update_clients()
-  File "/home/rob/Documents/Server/GUI.py", line 106, in update_clients
-    temp.update_state(self.shared_data[up], "", self.shared_data["client_activation_"+ name])
-KeyError: 'client_activation_'
+                """ Traceback (most recent call last):
+                File "/usr/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+                    self.run()
+                File "/usr/lib/python3.7/threading.py", line 870, in run
+                    self._target(*self._args, **self._kwargs)
+                File "Socketserver.py", line 30, in thread_function_gui
+                    gui = GUI(shared_information)
+                File "/home/rob/Documents/Server/GUI.py", line 64, in __init__
+                    self.draw_to_infinity()
+                File "/home/rob/Documents/Server/GUI.py", line 71, in draw_to_infinity
+                    self.update_clients()
+                File "/home/rob/Documents/Server/GUI.py", line 106, in update_clients
+                    temp.update_state(self.shared_data[up], "", self.shared_data["client_activation_"+ name])
+                KeyError: 'client_activation_' """
 
 
                 self.clients[up].update_state(self.shared_data[up], self.shared_data["client_msgs_"+ name], self.shared_data["client_activation_" + name])

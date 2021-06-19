@@ -26,9 +26,38 @@ def recv_timeout(sock, bytes_to_read, timeout_seconds):
 
 def thread_function_gui(shared_information):
     print("thead startest für hui")
-    print(shared_information)
     gui = GUI(shared_information)
     
+
+def thread_function_plotter(shared_information):
+    print("thead startest für plotter")
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # Connect the socket to the port where the server is listening
+    server_address = ('127.0.0.1', 8052)
+    sock.connect(server_address)
+    print("CONNECTED TO PLOTTER")
+
+    try:
+
+        # Send data
+        message = b'This is the message.  It will be repeated.'
+        print('PLotter client: sending {!r}'.format(message))
+        sock.sendall(message)
+
+        time.sleep(10)
+        message = b'val=33;77-'
+        print('PLotter client: sending {!r}'.format(message))
+        sock.sendall(message)
+
+        time.sleep(10)
+        message = b'val=100;0-'
+        print('PLotter client: sending {!r}'.format(message))
+        sock.sendall(message)
+
+    finally:
+        print('closing socket')
+        sock.close()
 
 
 
@@ -173,12 +202,14 @@ def Main():
     gui_thread.start()
 
 
-
+    ## Start plotter client thread_function_plotter
+    plotter_thread = threading.Thread(target=thread_function_plotter, args=(shared_information, ))
+    plotter_thread.start()
     # a forever loop until client wants to exit 
     while True: 
 
         whatchdog += 1
-        if whatchdog > 99999:
+        if whatchdog > 60:
             return
         # establish connection with client
         timeout = s.gettimeout()
