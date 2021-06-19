@@ -166,7 +166,6 @@ class Design:
         self.shared_data["dmx"][5] = 126
 
 
-        self.shared_data["ap"].start_music()
 
         while 1:
 
